@@ -1,0 +1,204 @@
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    height: 50px;
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo img{
+   width: 10%; 
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#language-selector {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.marine-image {
+    text-align: center;
+}
+
+.marine-image img {
+    width: 100%; /* La imagen ocupará el 100% del ancho disponible */
+    max-width: 100%; /* La imagen no superará su tamaño original */
+    height: auto; /* Mantener la proporción original de la imagen */
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/*Coral Dot */
+.coral-info {
+    display: none;
+    position: absolute;
+    width: 200px; /* Ajusta según tus necesidades */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    top: 580px;
+    left: 678px;
+}
+
+.coral-info::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+
+
+.dot-coral {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    top: 740px;
+    left: 787px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border: 2px solid white; /* Define el grosor y el color del borde */
+}
+
+/*Algea Dot */
+.algea-info {
+    display: none;
+    position: absolute;
+    width: 200px; /* Ajusta según tus necesidades */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    top: 204px;
+    left: 350px;
+}
+
+.algea-info::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+
+
+.dot-algea {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    top: 364px;
+    left: 459px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border: 2px solid white; /* Define el grosor y el color del borde */
+}
+
+/*Pez Dot */
+.pez-info {
+    display: none;
+    position: absolute;
+    width: 200px; /* Ajusta según tus necesidades */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    top: 152px;
+    left: 888px;
+}
+
+.pez-info::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+
+
+.dot-Pez {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    top: 312px;
+    left: 997px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border: 2px solid white; /* Define el grosor y el color del borde */
+}
+
+/*Roca Dot */
+.roca-info {
+    display: none;
+    position: absolute;
+    width: 200px; /* Ajusta según tus necesidades */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    top: 564px;
+    left: 1041px;
+}
+
+.roca-info::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.dot-roca {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    top: 724px;
+    left: 1150px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border: 2px solid white; /* Define el grosor y el color del borde */
+}
