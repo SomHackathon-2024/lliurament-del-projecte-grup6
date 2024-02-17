@@ -2,6 +2,7 @@
 import Header from "../components/Nav/Header.astro";
 import PaginaInicio from "../pages/PaginaInicio.astro";
 import MapaInteractivo from "../pages/MapaInteractivo.astro";
+import Game from "../pages/Game.astro";
 
 interface Props {
 	title: string;
@@ -24,6 +25,7 @@ const { title } = Astro.props;
 		<Header />
 		<PaginaInicio id="inicio"/>
 		<MapaInteractivo id="mapasInteractivos"/>
+		<Game id="game"/>
 	</body>
 </html>
 <style>

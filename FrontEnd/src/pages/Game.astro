@@ -1,0 +1,221 @@
+<div class="memory-master">
+    <div class="memory-game">
+        <div class="memory-card" data-framework="dolphin">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/AnimalFront.jpeg"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
+
+        <!-- Segunda carta pareja -->
+        <div class="memory-card" data-framework="dolphin">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/AnimalFront.jpeg"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
+
+        <!-- Estrella 1 -->
+        <div class="memory-card" data-framework="estrella">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/Animal2Front.png"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
+
+        <!-- Segunda carta pareja -->
+        <div class="memory-card" data-framework="estrella">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/Animal2Front.png"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
+    </div>
+    <button id="start-btn">Comenzar juego</button>
+</div>
+
+<style>
+    .memory-master {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .memory-game {
+        width: 100%; /* Ocupar todo el ancho disponible */
+        height: 90%; /* Para que el juego ocupe el 90% de la altura de la ventana */
+        max-height: 800px; /* Limitar la altura máxima del juego */
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10px;
+        justify-content: center; /* Centrar horizontalmente las cartas */
+        align-items: center; /* Centrar verticalmente las cartas */
+    }
+
+    .memory-card {
+        width: calc(
+            100% - 10px
+        ); /* 25% del ancho del contenedor con margen entre cartas */
+        height: calc(
+            100% - 10px
+        ); /* 25% del alto del contenedor con margen entre cartas */
+        perspective: 1000px;
+    }
+
+    .card-content {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+    }
+
+    .memory-card img {
+        width: 200%;
+        height: 200%;
+        object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortes */
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .front-face {
+        transform: rotateY(180deg);
+    }
+
+    .flip .card-content {
+        transform: rotateY(180deg);
+    }
+
+    #start-btn {
+        margin: auto; /* Centra horizontalmente el botón */
+        margin-top: 20px; /* Espacio por encima del botón */
+        margin-bottom: 20px; /* Espacio por debajo del botón */
+        display: block; /* Convertir el botón en un elemento de bloque */
+        width: 200px; /* Ancho del botón */
+        height: 40px; /* Altura del botón */
+        font-size: 16px; /* Tamaño de la fuente del botón */
+        border: none;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        opacity: 1; /* Aseguramos que el botón siempre sea visible */
+        transition: opacity 0.5s; /* Añadimos una transición de opacidad */
+    }
+
+    .game-started .memory-card {
+        opacity: 1; /* Mostramos las cartas cuando el juego comienza */
+    }
+
+    .game-started #start-btn {
+        display: none; /* Ocultamos el botón de inicio cuando el juego comienza */
+    }
+</style>
+
+<script>
+    const cards = document.querySelectorAll(".memory-card");
+    const startButton = document.getElementById("start-btn");
+
+    let hasFlippedCard = false;
+    let lockBoard = false;
+    let firstCard, secondCard;
+
+    function flipCard() {
+        if (lockBoard) return;
+        if (this === firstCard) return;
+
+        this.classList.toggle("flip"); // Cambiamos "add" por "toggle"
+
+        if (!hasFlippedCard) {
+            hasFlippedCard = true;
+            firstCard = this;
+            return;
+        }
+
+        secondCard = this;
+
+        checkForMatch();
+    }
+
+    function checkForMatch() {
+        let isMatch =
+            firstCard.dataset.framework === secondCard.dataset.framework;
+
+        isMatch ? disableCards() : unflipCards();
+    }
+
+    function disableCards() {
+        firstCard.removeEventListener("click", flipCard);
+        secondCard.removeEventListener("click", flipCard);
+
+        resetBoard();
+    }
+
+    function unflipCards() {
+        lockBoard = true;
+
+        setTimeout(() => {
+            firstCard.classList.toggle("flip"); // Cambiamos "remove" por "toggle"
+            secondCard.classList.toggle("flip"); // Cambiamos "remove" por "toggle"
+
+            resetBoard();
+        }, 1000);
+    }
+
+    function resetBoard() {
+        [hasFlippedCard, lockBoard] = [false, false];
+        [firstCard, secondCard] = [null, null];
+    }
+
+    function startGame() {
+        document.querySelector(".memory-game").classList.add("game-started");
+        shuffle();
+        cards.forEach((card) => {
+            card.classList.remove("flip");
+            card.addEventListener("click", flipCard);
+        });
+    }
+
+    startButton.addEventListener("click", startGame);
+
+    function shuffle() {
+        cards.forEach((card) => {
+            let randomPos = Math.floor(Math.random() * 16);
+            card.style.order = randomPos;
+        });
+    }
+</script>
