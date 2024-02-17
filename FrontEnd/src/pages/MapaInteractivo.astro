@@ -1,0 +1,207 @@
+---
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<div class="marine-image" id={id}>
+    <img
+        src="../../public/images/mapaInteractivo/FloraMarina.jpg"
+        alt="Flora marina"
+    />
+
+    <div class="dot-coral"></div>
+    <div class="coral-info info-dot">
+        <h2>Coral</h2>
+        <p>Información sobre la planta seleccionada.</p>
+    </div>
+
+    <div class="dot-algea"></div>
+    <div class="algea-info info-dot">
+        <h2>Algea</h2>
+        <p>Información sobre la planta seleccionada.</p>
+    </div>
+
+    <div class="dot-Pez"></div>
+    <div class="pez-info info-dot">
+        <h2>Pez</h2>
+        <p>Información sobre la planta seleccionada.</p>
+    </div>
+
+    <div class="dot-roca"></div>
+    <div class="roca-info info-dot">
+        <h2>Roca</h2>
+        <p>Información sobre la planta seleccionada.</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dots = document.querySelectorAll(".marine-image .info-dot");
+
+        dots.forEach((dot) => {
+            const dotButton = dot.previousElementSibling;
+            dotButton.addEventListener("click", () => {
+                // Ocultar todas las informaciones antes de mostrar la correcta
+                dots.forEach((info) => {
+                    info.style.display = "none";
+                });
+                // Mostrar la información correspondiente al punto en el que se hizo clic
+                dot.style.display =
+                    dot.style.display === "none" ? "block" : "none";
+            });
+        });
+    });
+</script>
+
+<style>
+    /*Coral Dot */
+    .coral-info {
+        display: none;
+        position: relative;
+        width: 200px; /* Ajusta según tus necesidades */
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        top: 580px;
+        left: 678px;
+    }
+
+    .coral-info::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+
+    .dot-coral {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        border-radius: 50%;
+        top: 740px;
+        left: 787px;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        border: 2px solid white; /* Define el grosor y el color del borde */
+    }
+
+    /*Algea Dot */
+    .algea-info {
+        display: none;
+        position: relative;
+        width: 200px; /* Ajusta según tus necesidades */
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        top: 204px;
+        left: 350px;
+    }
+
+    .algea-info::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+
+    .dot-algea {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        border-radius: 50%;
+        top: 364px;
+        left: 459px;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        border: 2px solid white; /* Define el grosor y el color del borde */
+    }
+
+    /*Pez Dot */
+    .pez-info {
+        display: none;
+        position: relative;
+        width: 200px; /* Ajusta según tus necesidades */
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        top: 152px;
+        left: 888px;
+    }
+
+    .pez-info::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+
+    .dot-Pez {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        border-radius: 50%;
+        top: 312px;
+        left: 997px;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        border: 2px solid white; /* Define el grosor y el color del borde */
+    }
+
+    /*Roca Dot */
+    .roca-info {
+        display: none;
+        position: relative;
+        width: 200px; /* Ajusta según tus necesidades */
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        top: 564px;
+        left: 1041px;
+    }
+
+    .roca-info::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        margin-left: -10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+
+    .dot-roca {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        border-radius: 50%;
+        top: 724px;
+        left: 1150px;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        border: 2px solid white; /* Define el grosor y el color del borde */
+    }
+</style>
