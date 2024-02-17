@@ -18,12 +18,36 @@ const { contenido, referencia } = Astro.props;
 >
     {contenido}
 </a> -->
-<a href={referencia} class="m-5 hover:scale-110 duration-150 hover:shadow-xl shadow-slate-50">
+<a href={referencia} class="m-5 hover:scale-110 duration-150 shadow-slate-50">
     {contenido}
 </a>
 
 <style>
     a {
-        color: black;
+        color: #000000;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.15em;
+
+        display: inline-block;
+        position: relative;
+    }
+    a:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: #fff;
+        transition:
+            width 0.3s ease 0s,
+            left 0.3s ease 0s;
+        width: 0;
+    }
+    a:hover:after {
+        width: 100%;
+        left: 0;
     }
 </style>
