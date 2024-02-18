@@ -1,70 +1,95 @@
-<div class="memory-master">
-    <div class="memory-game">
-        <div class="memory-card" data-framework="dolphin">
-            <div class="card-content">
-                <img
-                    class="front-face"
-                    src="../../public/images/game/AnimalFront.jpeg"
-                    alt="Dolphin"
-                />
-                <img
-                    class="back-face"
-                    src="../../public/images/game/CardBack.png"
-                    alt="Card Back"
-                />
-            </div>
-        </div>
+---
+import Header from "/Header.astro";
 
-        <!-- Segunda carta pareja -->
-        <div class="memory-card" data-framework="dolphin">
-            <div class="card-content">
-                <img
-                    class="front-face"
-                    src="../../public/images/game/AnimalFront.jpeg"
-                    alt="Dolphin"
-                />
-                <img
-                    class="back-face"
-                    src="../../public/images/game/CardBack.png"
-                    alt="Card Back"
-                />
-            </div>
-        </div>
+interface Props {
+	title: string;
+}
 
-        <!-- Estrella 1 -->
-        <div class="memory-card" data-framework="estrella">
-            <div class="card-content">
-                <img
-                    class="front-face"
-                    src="../../public/images/game/Animal2Front.png"
-                    alt="Dolphin"
-                />
-                <img
-                    class="back-face"
-                    src="../../public/images/game/CardBack.png"
-                    alt="Card Back"
-                />
-            </div>
-        </div>
+const { title } = Astro.props;
+---
 
-        <!-- Segunda carta pareja -->
-        <div class="memory-card" data-framework="estrella">
-            <div class="card-content">
-                <img
-                    class="front-face"
-                    src="../../public/images/game/Animal2Front.png"
-                    alt="Dolphin"
-                />
-                <img
-                    class="back-face"
-                    src="../../public/images/game/CardBack.png"
-                    alt="Card Back"
-                />
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image" href="../../public/iconMataro.png" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <Header />
+        <div class="memory-master">
+            <div class="memory-game">
+                <div class="memory-card" data-framework="dolphin">
+                    <div class="card-content">
+                        <img
+                            class="front-face"
+                            src="../../public/images/game/AnimalFront.jpeg"
+                            alt="Dolphin"
+                        />
+                        <img
+                            class="back-face"
+                            src="../../public/images/game/CardBack.png"
+                            alt="Card Back"
+                        />
+                    </div>
+                </div>
+
+                <!-- Segunda carta pareja -->
+                <div class="memory-card" data-framework="dolphin">
+                    <div class="card-content">
+                        <img
+                            class="front-face"
+                            src="../../public/images/game/AnimalFront.jpeg"
+                            alt="Dolphin"
+                        />
+                        <img
+                            class="back-face"
+                            src="../../public/images/game/CardBack.png"
+                            alt="Card Back"
+                        />
+                    </div>
+                </div>
+
+                <!-- Estrella 1 -->
+                <div class="memory-card" data-framework="estrella">
+                    <div class="card-content">
+                        <img
+                            class="front-face"
+                            src="../../public/images/game/Animal2Front.png"
+                            alt="Dolphin"
+                        />
+                        <img
+                            class="back-face"
+                            src="../../public/images/game/CardBack.png"
+                            alt="Card Back"
+                        />
+                    </div>
+                </div>
+
+                <!-- Segunda carta pareja -->
+                <div class="memory-card" data-framework="estrella">
+                    <div class="card-content">
+                        <img
+                            class="front-face"
+                            src="../../public/images/game/Animal2Front.png"
+                            alt="Dolphin"
+                        />
+                        <img
+                            class="back-face"
+                            src="../../public/images/game/CardBack.png"
+                            alt="Card Back"
+                        />
+                    </div>
+                </div>
             </div>
+            <button id="start-btn">Comenzar juego</button>
         </div>
-    </div>
-    <button id="start-btn">Comenzar juego</button>
-</div>
+    </body>
+</html>
 
 <style>
     .memory-master {
