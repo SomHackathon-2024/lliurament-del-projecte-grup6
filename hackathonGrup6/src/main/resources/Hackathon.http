@@ -12,7 +12,7 @@ response.headers.valueOf("Authorization"));
  client.log("token: " + response.headers.valueOf("Authorization"));
 %}
 
-### login Student
+### login User
 POST http://localhost:8080/authenticate
 content-type: application/json
 
@@ -27,7 +27,7 @@ client.log("token: " + response.headers.valueOf("Authorization"));
 %}
 
 
-### login User
+### login Organizer
 POST http://localhost:8080/authenticate
 content-type: application/json
 
@@ -46,11 +46,11 @@ content-type: application/json
 PATCH http://localhost:8080/events/44e128a5ac7a4c9abe4c224b6bf81b22/availables/false
 Authorization: {{auth_token}}
 
-### getAvailableCourses
+### getAvailableEvents
 GET http://localhost:8080/events/availables
 Authorization: {{auth_token}}
 
-### createCourse
+### createEvents
 POST http://localhost:8080/events
 Authorization: {{auth_token}}
 content-type: application/json
@@ -67,11 +67,11 @@ content-type: application/json
 }
 
 
-###  getCourse
+###  getEvents
 GET http://localhost:8080/events/44e128a5ac7a4c9abe4c224b6bf81b21
 Authorization: {{auth_token}}
 
-### updateCourse
+### updateEvents
 POST http://localhost:8080/events/44e128a5ac7a4c9abe4c224b6bf81b20
 Authorization: {{auth_token}}
 content-type: application/json
@@ -86,12 +86,12 @@ content-type: application/json
 PATCH http://localhost:8080/events/44e128a5ac7a4c9abe4c224b6bf81b20/prices/1500.0
 Authorization: {{auth_token}}
 
-### searchCourses
+### searchEvents
 GET http://localhost:8080/events/search?keyword=de
 Authorization: {{auth_token}}
 
 
-### getRecentCourses
+### getRecentEvents
 GET http://localhost:8080/events/recent
 Authorization: {{auth_token}}
 
@@ -109,16 +109,16 @@ content-type: application/json
 }
 
 
-### getCourseReviews
+### getEventsReviews
 GET http://localhost:8080/events/44e128a5ac7a4c9abe4c224b6bf81b20/reviews
 Authorization: {{auth_token}}
 
 
-### getStudentsFromCourse
+### getStudentsFromEvents
 GET http://localhost:8080/events/44e128a5ac7a4c9abe4c224b6bf81b20/students
 Authorization: {{auth_token}}
 
-### getAllCourses
+### getAllEvents
 GET http://localhost:8080/events
 Authorization: {{auth_token}}
 
@@ -128,13 +128,13 @@ Authorization: {{auth_token_1}}
 content-type: application/json
 
 {
-  "title": "Encantada",
+  "title": "Encantado",
   "content": "Este curso ha sido genial!!",
   "satisfaction": 5,
   "reviewDate": "2023-12-15"
 }
 
 
-### getStudentCoursesWithReviews
+### getStudentEventsWithReviews
 GET http://localhost:8080/events/students/44e128a5ac7a4c9abe4c224b6bf81b30/with-reviews
 Authorization: {{auth_token}}
