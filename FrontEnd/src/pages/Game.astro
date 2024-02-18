@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 interface Props {
     id: string;
@@ -8,8 +8,7 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<Layout title="Página de Game">
-</Layout>
+<Layout title="Página de Game" />
 
 <div class="memory-master" id={id}>
     <button id="start-btn">Comenzar juego</button>
@@ -76,6 +75,70 @@ const { id } = Astro.props;
                 />
             </div>
         </div>
+
+        <!--Estrella 2 -->
+        <div class="memory-card" data-framework="test2">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/Animal3Front.png"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
+
+        <!-- Segunda carta pareja -->
+        <div class="memory-card" data-framework="test2">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/Animal3Front.png"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
+
+        <!-- Estrella 3 -->
+        <div class="memory-card" data-framework="test3">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/Animal4Front.png"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
+
+        <!-- Segunda carta pareja -->
+        <div class="memory-card" data-framework="test3">
+            <div class="card-content">
+                <img
+                    class="front-face"
+                    src="../../public/images/game/Animal4Front.png"
+                    alt="Dolphin"
+                />
+                <img
+                    class="back-face"
+                    src="../../public/images/game/CardBack.png"
+                    alt="Card Back"
+                />
+            </div>
+        </div>
     </div>
 </div>
 
@@ -89,25 +152,26 @@ const { id } = Astro.props;
     }
 
     .memory-game {
-        width: 100%; /* Ocupar todo el ancho disponible */
-        height: 90%; /* Para que el juego ocupe el 90% de la altura de la ventana */
-        max-height: 800px; /* Limitar la altura máxima del juego */
+        width: 100%;
+        height: 90%;
+        max-height: 800px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        gap: 10px;
-        justify-content: center; /* Centrar horizontalmente las cartas */
-        align-items: center; /* Centrar verticalmente las cartas */
+        gap: 20px; /* Ajusta este valor según la cantidad de separación deseada */
+        justify-content: center;
+        align-items: center;
     }
 
     .memory-card {
         width: calc(
-            100% - 10px
+            100% - 20px
         ); /* 25% del ancho del contenedor con margen entre cartas */
         height: calc(
-            100% - 10px
+            100% - 20px
         ); /* 25% del alto del contenedor con margen entre cartas */
         perspective: 1000px;
+        margin: 10px; /* Espacio entre las cartas */
     }
 
     .card-content {
@@ -116,11 +180,12 @@ const { id } = Astro.props;
         position: relative;
         transform-style: preserve-3d;
         transition: transform 0.5s;
+        padding: 10px; /* Espacio entre el contenido de la carta y el borde */
     }
 
     .memory-card img {
-        width: 200%;
-        height: 200%;
+        width: 100%; /* Tamaño relativo a su contenedor */
+        height: 100%; /* Tamaño relativo a su contenedor */
         object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortes */
         position: absolute;
         backface-visibility: hidden;
