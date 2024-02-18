@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @NoArgsConstructor
 @Getter
-@Entity(name = "users")
+@Entity(name = "floraIfauna")
 public class FloraIFauna {
 
     @ManyToOne

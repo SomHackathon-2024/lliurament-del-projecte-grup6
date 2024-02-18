@@ -174,8 +174,8 @@ public class EventsService {
     }
 
     public FloraIFaunaDTO createFloraIFauna(FloraIFaunaDTO floraIFaunaDTO) throws Exception {
-        FloraIFauna floraIFauna = new FloraIFauna(floraIFaunaDTO);
-        floraIFaunaRepository.save(floraIFauna);
+        FloraIFauna flora = new FloraIFauna(floraIFaunaDTO);
+        floraIFaunaRepository.save(flora);
         return floraIFaunaDTO;
     }
     public FloraIFaunaDTO getFloraIFauna(String floraIFaunaId) throws Exception {
