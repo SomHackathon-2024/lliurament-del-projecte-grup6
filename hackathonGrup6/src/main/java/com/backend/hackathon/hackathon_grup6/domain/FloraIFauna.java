@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity(name = "users")
 public class FloraIFauna {
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "events_id")
     private Events events;
 
