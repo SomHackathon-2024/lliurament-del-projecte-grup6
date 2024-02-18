@@ -222,6 +222,11 @@ const { id } = Astro.props;
     .game-started #start-btn {
         display: none; /* Ocultamos el botón de inicio cuando el juego comienza */
     }
+
+    .win-message {
+        text-align: center;
+        margin-top: 20px;
+    }
 </style>
 
 <script>
@@ -231,12 +236,13 @@ const { id } = Astro.props;
     let hasFlippedCard = false;
     let lockBoard = false;
     let firstCard, secondCard;
+    let gameEnded = false;
 
     function flipCard() {
-        if (lockBoard) return;
+        if (lockBoard || gameEnded) return;
         if (this === firstCard) return;
 
-        this.classList.toggle("flip"); // Cambiamos "add" por "toggle"
+        this.classList.toggle("flip");
 
         if (!hasFlippedCard) {
             hasFlippedCard = true;
@@ -267,8 +273,8 @@ const { id } = Astro.props;
         lockBoard = true;
 
         setTimeout(() => {
-            firstCard.classList.toggle("flip"); // Cambiamos "remove" por "toggle"
-            secondCard.classList.toggle("flip"); // Cambiamos "remove" por "toggle"
+            firstCard.classList.toggle("flip");
+            secondCard.classList.toggle("flip");
 
             resetBoard();
         }, 1000);
@@ -280,12 +286,26 @@ const { id } = Astro.props;
     }
 
     function startGame() {
-        document.querySelector(".memory-game").classList.add("game-started");
-        shuffle();
-        cards.forEach((card) => {
-            card.classList.remove("flip");
-            card.addEventListener("click", flipCard);
-        });
+        const gameContainer = document.querySelector(".memory-game");
+        const startButton = document.getElementById("start-btn");
+
+        if (gameContainer.classList.contains("game-started")) {
+            // Si el juego ya ha comenzado, reiniciamos el tablero
+            resetBoard();
+            cards.forEach((card) => card.classList.remove("flip"));
+            startButton.textContent = "Comenzar juego";
+            gameContainer.classList.remove("game-started");
+            gameEnded = true; // Indicar que la partida ha finalizado
+        } else {
+            // Si el juego aún no ha comenzado, iniciamos el juego
+            gameContainer.classList.add("game-started");
+            shuffle();
+            cards.forEach((card) => {
+                card.addEventListener("click", flipCard);
+            });
+            startButton.textContent = "Acabar Partida";
+            gameEnded = false; // Indicar que la partida ha comenzado
+        }
     }
 
     startButton.addEventListener("click", startGame);
