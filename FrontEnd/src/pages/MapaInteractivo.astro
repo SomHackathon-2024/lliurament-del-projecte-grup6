@@ -1,10 +1,17 @@
 ---
+
+import Layout from '../layouts/Layout.astro';
+
 interface Props {
     id: string;
 }
 
 const { id } = Astro.props;
 ---
+
+<Layout title="Página de Game">
+</Layout>
+
 
 <div class="marine-image" id={id}>
     

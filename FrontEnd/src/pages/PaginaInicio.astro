@@ -1,6 +1,8 @@
 ---
 import Card from "../components/Card.astro";
 
+
+
 interface Props {
     id: string;
 }
@@ -12,18 +14,22 @@ const { id } = Astro.props;
     <h1>¡Bienvenido al <span class="text-gradient">Mar de Mataró!</span></h1>
     <ul role="list" class="link-card-grid">
         <Card
+        href="Game"
             title="Aprende Jugando"
             body="Explora la diversidad marina mientras recolectas conjuntos de cartas."
         />
         <Card
+        href="Actividades"
             title="Aventuras Acuáticas"
             body="Sumérgete en emocionantes actividades marítimas mientras exploras las aguas y descubres la historia del océano."
         />
         <Card
+        href=""
             title="Descubre Saboreando"
             body="Explora la riqueza culinaria mientras disfrutas de actividades y aprendes sobre la historia gastronómica."
         />
         <Card
+        href="MapaInteractivo"
             title="Travesía Histórica"
             body="Explora la fascinante historia marítima de Mataró y su influencia en la ciudad a lo largo del tiempo."
         />

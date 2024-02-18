@@ -1,12 +1,18 @@
 ---
 import Actividad from '../components/Actividades/Actividad.astro';
 
+import Layout from '../layouts/Layout.astro';
+
 interface Props {
     id: string;
 }
 
 const { id } = Astro.props;
 ---
+
+<Layout title="Página de Actividades">
+</Layout>
+
 
 <main id={id}>
     <h1></h1>
