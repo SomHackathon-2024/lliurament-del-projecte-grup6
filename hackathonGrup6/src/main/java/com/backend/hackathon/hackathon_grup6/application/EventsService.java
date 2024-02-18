@@ -3,15 +3,10 @@ package com.backend.hackathon.hackathon_grup6.application;
 import com.backend.hackathon.hackathon_grup6.application.Exception.DuplicateEventsTitleException;
 import com.backend.hackathon.hackathon_grup6.application.Exception.InvalidPriceException;
 import com.backend.hackathon.hackathon_grup6.application.Exception.InvalidTitleException;
-import com.backend.hackathon.hackathon_grup6.application.dto.EventsDTO;
-import com.backend.hackathon.hackathon_grup6.application.dto.LocationDTO;
-import com.backend.hackathon.hackathon_grup6.application.dto.ReviewDTO;
-import com.backend.hackathon.hackathon_grup6.application.dto.UserDTO;
-import com.backend.hackathon.hackathon_grup6.domain.Events;
-import com.backend.hackathon.hackathon_grup6.domain.Location;
-import com.backend.hackathon.hackathon_grup6.domain.Review;
-import com.backend.hackathon.hackathon_grup6.domain.Users;
+import com.backend.hackathon.hackathon_grup6.application.dto.*;
+import com.backend.hackathon.hackathon_grup6.domain.*;
 import com.backend.hackathon.hackathon_grup6.persistance.EventsRepository;
+import com.backend.hackathon.hackathon_grup6.persistance.FloraIFaunaRepository;
 import com.backend.hackathon.hackathon_grup6.persistance.LocationRepository;
 import com.backend.hackathon.hackathon_grup6.persistance.ReviewRepository;
 import com.backend.hackathon.hackathon_grup6.persistance.UserRepository;
@@ -33,12 +28,16 @@ public class EventsService {
     private final UserRepository userRepository;
     private final ReviewRepository reviewRepository;
     private final LocationRepository locationRepository;
+    private final FloraIFaunaRepository floraIFaunaRepository;
 
-    public EventsService(EventsRepository eventsRepository, UserRepository userRepository,ReviewRepository reviewRepository,LocationRepository locationRepository) {
+    public EventsService(EventsRepository eventsRepository, UserRepository userRepository,
+                         ReviewRepository reviewRepository,LocationRepository locationRepository,
+                         FloraIFaunaRepository floraIFaunarepository) {
         this.eventsRepository = eventsRepository;
         this.userRepository = userRepository;
         this.reviewRepository = reviewRepository;
         this.locationRepository = locationRepository;
+        this.floraIFaunaRepository = floraIFaunarepository;
     }
 
     public EventsDTO updateEvents(String eventId, EventsDTO eventsDTO) {
@@ -172,5 +171,15 @@ public class EventsService {
     public LocationDTO getLocation(String locationId){
         Location location = locationRepository.findById(locationId).orElseThrow();
         return new LocationDTO(location);
+    }
+
+    public FloraIFaunaDTO createFloraIFauna(FloraIFaunaDTO floraIFaunaDTO) throws Exception {
+        FloraIFauna floraIFauna = new FloraIFauna(floraIFaunaDTO);
+        floraIFaunaRepository.save(floraIFauna);
+        return floraIFaunaDTO;
+    }
+    public FloraIFaunaDTO getFloraIFauna(String floraIFaunaId) throws Exception {
+        FloraIFauna floraIFauna = floraIFaunaRepository.findById(floraIFaunaId).orElseThrow();
+        return new FloraIFaunaDTO(floraIFauna);
     }
 }
