@@ -12,6 +12,7 @@ const { id } = Astro.props;
 </Layout>
 
 <div class="memory-master" id={id}>
+    <button id="start-btn">Comenzar juego</button>
     <div class="memory-game">
         <div class="memory-card" data-framework="dolphin">
             <div class="card-content">
@@ -76,7 +77,6 @@ const { id } = Astro.props;
             </div>
         </div>
     </div>
-    <button id="start-btn">Comenzar juego</button>
 </div>
 
 <style>
